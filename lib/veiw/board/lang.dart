@@ -1,4 +1,6 @@
+import 'package:erp/componant/bottomSheet.dart';
 import 'package:erp/componant/colors.dart';
+import 'package:erp/componant/dialogApp.dart';
 import 'package:flutter/material.dart';
 
 class Langoage extends StatefulWidget {
@@ -9,6 +11,8 @@ class Langoage extends StatefulWidget {
 }
 
 class _Langoage extends State<Langoage> {
+  DialogApp dialogApp = new DialogApp();
+  BottomSheetApp bottomSheetApp = new BottomSheetApp();
   ColorsApp colorsApp = new ColorsApp();
   @override
   Widget build(BuildContext context) {
@@ -52,12 +56,18 @@ class _Langoage extends State<Langoage> {
               child: Text("Pick a Language",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
             ),
-            Card(
-              color: colorsApp.colorWhaitApp,
-              margin: EdgeInsets.symmetric(horizontal: 30),
-              child: ListTile(
-                title: Text("English"),
-                trailing: Icon(Icons.keyboard_arrow_right),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+              child: Card(
+                color: colorsApp.colorWhaitApp,
+                margin: EdgeInsets.symmetric(horizontal: 30),
+                child: ListTile(
+                  onTap: () {
+                    bottomSheetApp.choseLangoage(context);
+                  },
+                  title: Text("English"),
+                  trailing: Icon(Icons.keyboard_arrow_right),
+                ),
               ),
             ),
             SizedBox(
